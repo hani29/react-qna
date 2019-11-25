@@ -38,7 +38,12 @@ class Questions extends Component {
             let val =document.getElementById("select-"+i).value;
             if(val == questList[i].answers[0]){
                 correctAns++;
-
+            }
+            if(val == 'select'){
+                document.getElementById("quest-"+i).style.color = 'red'
+            }
+            else{
+                document.getElementById("quest-"+i).style.color = 'black'
             }
             newData.push(val);
             console.log("correctAns =", correctAns)
@@ -53,22 +58,21 @@ class Questions extends Component {
     }
     render() {
         return (
-            <div>
-                <form onSubmit={this.getData}>
-              {this.state.questList.map((item,index)=>{
-                return <QuestionData question={item.question} options={item.options} key1={"select-"+index} key={index} />
-              })} 
-              <div style={{marginTop:20}}>
-                  <button type="submit">Submit</button>
-                  <button type="reset">Reset</button>
-              </div>
-              </form>
-
-              {this.state.success && <div className="success">
-Successfully submitted!
-              </div>}
-            </div>
-
+            <div  className='main'>
+            <form onSubmit={this.getData}>
+          {this.state.questList.map((item,index)=>{
+            return <QuestionData question={item.question} options={item.options} key1={"select-"+index}
+            key2={"quest-"+index} key={index} />
+          })} 
+          <div style={{marginTop:20}}>
+              <button type="submit" className='btn1' style={{backgroundColor: '#4CAF50'}}>Submit</button>
+              <button type="reset"className='btn1' style={{backgroundColor: 'red'}}>Reset</button>
+          </div>
+          </form>
+          {this.state.success && <div className="success">
+            Successfully submitted!
+          </div>}
+          </div>
             
         )
     }
@@ -77,11 +81,17 @@ Successfully submitted!
 class QuestionData extends Component {
     render() {
         
-    const {question,options,key1} = this.props
+    const {question,options,key1,key2} = this.props
         return (
-            <div>
-                <p>{question}</p>
+            <div >
+                {/* <div className='questions'style={{marginBottom:40}}> */}
+                <div   style={{backgroundColor: 'rgba(0,0,0,0.81)', color:'white', padding: '0px', border: '1px solid black'}}>
+                <p id={key2}>{question}</p>
+                </div>
+                <div className='questions'style={{marginBottom:40}}>
+               {/* <hr className='line'/> */}
                 <select id={key1}>
+                <option value='select' >select</option>
                     <option value={0} name="question">
                         {options[0]}
                     </option>
@@ -89,14 +99,16 @@ class QuestionData extends Component {
                         {options[1]}
                     </option>
                 </select>
+                </div>
             </div>
+            // </div>
         )
     }
 }
-
 const mapStateToProps=state=>{
     return{
         rData:state.rData,
     }
 }
+
 export default connect(mapStateToProps)(Questions);
