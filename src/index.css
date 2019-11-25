@@ -11,3 +11,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.questions {
+  border: 1px solid black;
+  background-color: #eee;
+  padding: 10px 10px 20px;
+}
+.a {
+  display: contents;
+  border: 1px solid red;
+  background-color: lightgrey;
+  padding: 10px;
+  width: '100%';
+}
+.btn1{
+  border: none;
+  color: white;
+  padding: 9px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.main{
+  display: 'flex';
+  width: 80%;
+  height: auto;  
+  padding: 50px;
+  border: 1px solid black;
+  align-items : 'left';
+} 
+.line {
+  border: 'none';
+  background: '#ddd';
+  height: '1px';
+  margin: 10px -12px 20px -12px;
+
+}
