@@ -6,15 +6,16 @@ import * as serviceWorker from './serviceWorker';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 
+//Passing store props to "provide" which will in return provide props to rest of the react app.
 function App2(){
-    return <Provider store={store}>
+    return <Provider store={store}>  
         <App/>
-        
     </Provider>
 }
 const initialState ={
-    rData:'',
+    rData:''
 }
+//The reducer is a pure function that takes the previous state and an action, and returns the next stat
 function reducer(state=initialState,action){
     switch(action.type){
         case 'UPDATE':
